@@ -1,11 +1,11 @@
-﻿static string FindPath() {
+//Finding the Paths in the directory and recieving user input
+static string FindPath() {
     Console.Clear();
 
     string directLoc = @"D:\ToBeEncrypted";
 
     // files list from the root directory and prints it
     string[] files = Directory.GetFiles(directLoc);
-    //Console.WriteLine(String.Join(Environment.NewLine, files));
 
     int i = 0;
     foreach (string paths in files) {
@@ -18,6 +18,7 @@
     return @"" + files[Convert.ToInt32(Console.ReadLine()) - 1];
 }
 
+//Return an int wrapped between the upper and lower bounds
 static int Wrap(int num, int lower, int upper) {
 
     while(num > upper || num < lower) {
@@ -30,6 +31,7 @@ static int Wrap(int num, int lower, int upper) {
     return num;
 }
 
+//Encrypting the data in the file
 static byte[] Encrypt(string[] hex) {
 
     List<int> hexList = new List<int>();
@@ -76,6 +78,7 @@ static byte[] Encrypt(string[] hex) {
     return byteArray;
 }
 
+//Decrypting the data in the file
 static byte[] Decrypt(string[] hex) {
     List<int> hexList = new List<int>();
 
@@ -119,6 +122,11 @@ static byte[] Decrypt(string[] hex) {
     return byteArray;
 }
 
+
+
+//Code starts here
+
+//Reciving User input
 Console.Clear();
 
 Console.WriteLine("Do you want to encrypt or decrypt a file? e/d");
