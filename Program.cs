@@ -15,7 +15,11 @@ static string FindPath() {
 
     Console.Write("Select your file: ");
 
-    return @"" + files[Convert.ToInt32(Console.ReadLine()) - 1];
+    int userInput = Convert.ToInt32(Console.ReadLine());
+
+    Debug.Assert(userInput >= 1 && userInput <= files.Length, "Invalid file selection");
+    
+    return @"" + files[userInput - 1];
 }
 
 //Return an int wrapped between the upper and lower bounds
@@ -28,6 +32,8 @@ static int Wrap(int num, int lower, int upper) {
             num += upper - lower + 1;
     }
 
+    Debug.Assert(num > upper || num < lower, "Invalid input for Wrap function");
+    
     return num;
 }
 
